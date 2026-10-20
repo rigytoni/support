@@ -1,0 +1,25 @@
+# GitHub Pages / Jekyll config for the rigytoni support site.
+#
+# This repo publishes from the DEFAULT BRANCH ROOT, so every path in the repo
+# is reachable at https://rigytoni.github.io/support/<path>. Verified
+# 2026-10-20: /support/privacy and /support/terms return rendered HTML, and
+# the placeholder file at /support/dashboard was being served publicly.
+#
+# `exclude` keeps a path out of the built site entirely. The dashboard app was
+# moved to the private repo rigytoni/dashboard on 2026-10-20, so there is no
+# dashboard/ directory here now - the entry below is kept deliberately as a
+# GUARD, so that if one is ever added again it is not published by accident.
+#
+# DO NOT add a .nojekyll file to fix this. .nojekyll DISABLES Jekyll, which
+# would serve every file in the repo verbatim - publishing the whole dashboard
+# source instead of hiding it, and breaking privacy.md / terms.md, which rely
+# on Jekyll to render markdown into HTML.
+exclude:
+  - dashboard/
+  # Jekyll's own defaults, restated because setting `exclude` replaces them
+  - node_modules/
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
+  - Gemfile
+  - Gemfile.lock
